@@ -4,17 +4,23 @@ import sys
 from Sort import *
 
 
-def switch(array, index1, index2):
+def switch(array, index1):
     tmp = array[index1]
-    array[index1] = array[index2]
-    array[index2] = tmp
+    array[index1] = array[index1 + 1]
+    array[index1 + 1] = tmp
+    print(array)
 
 
 def bubbleSort(unsortedArray):
-    print("In Bubble")
-    for n in range(len(unsortedArray)):
+    for n in range(1, len(unsortedArray)):
+        print("Pass: " + str(n))
+        change = False
         for x in range(len(unsortedArray) - 1):
-            print("tmp")
+            if unsortedArray[x] > unsortedArray[x + 1]:
+                switch(unsortedArray, x)
+                change = True
+        if not change:
+            break
     return unsortedArray
 
 
@@ -25,9 +31,9 @@ def main():
         print(str(e) + "in main()")
     unsortedArrays = convertInput(userInput)
     for num, array in enumerate(unsortedArrays, start=1):
-        print("Sorting Array " + str(num) + "...")
-        sortedArray = bubbleSort(array)
-        print(sortedArray)
+        print("Sorting Array " + str(num) + "...\n" + str(array))
+        bubbleSort(array)
+        print("done!\n")
 
 
 if __name__ == '__main__':
