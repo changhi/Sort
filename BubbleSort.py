@@ -13,7 +13,6 @@ def switch(array, index1):
 
 def bubbleSort(unsortedArray):
     for n in range(1, len(unsortedArray)):
-        print("Pass: " + str(n))
         change = False
         for x in range(len(unsortedArray) - 1):
             if unsortedArray[x] > unsortedArray[x + 1]:
@@ -21,6 +20,7 @@ def bubbleSort(unsortedArray):
                 change = True
         if not change:
             break
+        print("After Pass: " + str(n))
     return unsortedArray
 
 
@@ -31,9 +31,10 @@ def main():
         print(str(e) + "in main()")
     unsortedArrays = convertInput(userInput)
     for num, array in enumerate(unsortedArrays, start=1):
-        print("Sorting Array " + str(num) + "...\n" + str(array))
-        bubbleSort(array)
-        print("done!\n")
+        print("Sorting Array " + str(num) + "...\n" + str(array) + "\nStart:")
+        sortedArray = bubbleSort(array)
+        print("done!")
+        prGreen(str(sortedArray) + "\n")
 
 
 if __name__ == '__main__':

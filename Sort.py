@@ -9,9 +9,13 @@ def convertInput(userInput):
             file = open(userInput)
             unsortedArrays = []
             for line in file:
-                unsortedArrays.append(json.loads(line))
-
+                if line[0] != "#":
+                    unsortedArrays.append(json.loads(line))
             return unsortedArrays
 
         except Exception as e:
             print(str(e) + "in convertInput")
+
+
+def prGreen(skk):
+    print("\033[92m {}\033[00m" .format(skk))
